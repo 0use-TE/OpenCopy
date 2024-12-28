@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -25,15 +26,18 @@ namespace 一键输入
 		public Form1()
 		{
 			InitializeComponent();
-
+			var stateLable = State;
 			// 注册 Ctrl+V 快捷键
 			if (RegisterHotKey(this.Handle, HOTKEY_ID, MOD_CONTROL, VK_V))
 			{
-				MessageBox.Show("快捷键已注册！");
+				stateLable.Text = "运行";
+				stateLable.BackColor = Color.Green;
 			}
 			else
 			{
 				MessageBox.Show("快捷键注册失败！");
+				stateLable.BackColor = Color.Red;
+				stateLable.Text = "失败";
 			}
 		}
 		protected override void WndProc(ref Message m)
@@ -123,6 +127,16 @@ namespace 一键输入
 		}
 
 		private void label3_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label4_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label6_Click(object sender, EventArgs e)
 		{
 
 		}
