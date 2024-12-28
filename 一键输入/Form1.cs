@@ -58,7 +58,7 @@ namespace 一键输入
 		public void SimulateTextInput(string text)
 		{
 			InputSimulator simulator = new InputSimulator();
-
+			Thread.Sleep(500);
 			// 遍历文本中的每个字符
 			foreach (var c in text)
 			{
@@ -72,7 +72,7 @@ namespace 一键输入
 					// 输入文本中的每个字符
 					simulator.Keyboard.TextEntry(c);
 				}
-				Thread.Sleep(10); // 模拟自然的打字速度（可调节）
+
 			}
 		}
 		protected override void OnFormClosed(FormClosedEventArgs e)

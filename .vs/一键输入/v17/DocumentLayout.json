@@ -3,16 +3,26 @@
   "WorkspaceRootPath": "C:\\Users\\Administrator\\Documents\\Winform\\\u4E00\u952E\u8F93\u5165\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7D582577-3F47-4FF2-AC66-FF4C0F4EE4E3}|\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165.csproj|c:\\users\\administrator\\documents\\winform\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7D582577-3F47-4FF2-AC66-FF4C0F4EE4E3}|\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165.csproj|C:\\Users\\Administrator\\Documents\\Winform\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7D582577-3F47-4FF2-AC66-FF4C0F4EE4E3}|\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165.csproj|solutionrelative:\u4E00\u952E\u8F93\u5165\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D582577-3F47-4FF2-AC66-FF4C0F4EE4E3}|\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165.csproj|C:\\Users\\Administrator\\Documents\\Winform\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7D582577-3F47-4FF2-AC66-FF4C0F4EE4E3}|\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165.csproj|solutionrelative:\u4E00\u952E\u8F93\u5165\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|\u4E00\u952E\u8F93\u5165||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D582577-3F47-4FF2-AC66-FF4C0F4EE4E3}|\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165.csproj|c:\\users\\administrator\\documents\\winform\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{7D582577-3F47-4FF2-AC66-FF4C0F4EE4E3}|\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165.csproj|solutionrelative:\u4E00\u952E\u8F93\u5165\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7D582577-3F47-4FF2-AC66-FF4C0F4EE4E3}|\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165.csproj|C:\\Users\\Administrator\\Documents\\Winform\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7D582577-3F47-4FF2-AC66-FF4C0F4EE4E3}|\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165.csproj|solutionrelative:\u4E00\u952E\u8F93\u5165\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D582577-3F47-4FF2-AC66-FF4C0F4EE4E3}|\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165.csproj|C:\\Users\\Administrator\\Documents\\Winform\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D582577-3F47-4FF2-AC66-FF4C0F4EE4E3}|\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165.csproj|solutionrelative:\u4E00\u952E\u8F93\u5165\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7D582577-3F47-4FF2-AC66-FF4C0F4EE4E3}|\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165.csproj|c:\\users\\administrator\\documents\\winform\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|a54ad834-9219-4aa6-b589-607af21c3e26"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,25 +32,48 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Form1.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\Winform\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165\\Form1.Designer.cs",
-              "RelativeDocumentMoniker": "\u4E00\u952E\u8F93\u5165\\Form1.Designer.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\Winform\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165\\Form1.Designer.cs",
-              "RelativeToolTip": "\u4E00\u952E\u8F93\u5165\\Form1.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T13:08:27.701Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "\u4E00\u952E\u8F93\u5165",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\Winform\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165.csproj",
+              "RelativeDocumentMoniker": "\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165.csproj",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\Winform\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165.csproj",
+              "RelativeToolTip": "\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-12-28T14:50:28.068Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\Winform\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165\\App.config",
+              "RelativeDocumentMoniker": "\u4E00\u952E\u8F93\u5165\\App.config",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\Winform\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165\\App.config",
+              "RelativeToolTip": "\u4E00\u952E\u8F93\u5165\\App.config",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAAUAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-12-28T14:45:47.721Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\Winform\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165\\Form1.cs",
+              "RelativeDocumentMoniker": "\u4E00\u952E\u8F93\u5165\\Form1.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\Winform\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165\\Form1.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "\u4E00\u952E\u8F93\u5165\\Form1.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-28T14:15:06.483Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
             },
             {
               "$type": "Document",
@@ -50,14 +83,14 @@
               "RelativeDocumentMoniker": "\u4E00\u952E\u8F93\u5165\\Form1.cs",
               "ToolTip": "C:\\Users\\Administrator\\Documents\\Winform\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165\\Form1.cs",
               "RelativeToolTip": "\u4E00\u952E\u8F93\u5165\\Form1.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAmwBkAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwBYAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-28T12:44:37.141Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\Winform\\\u4E00\u952E\u8F93\u5165\\\u4E00\u952E\u8F93\u5165\\Program.cs",
               "RelativeDocumentMoniker": "\u4E00\u952E\u8F93\u5165\\Program.cs",
@@ -65,8 +98,7 @@
               "RelativeToolTip": "\u4E00\u952E\u8F93\u5165\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T10:40:59.208Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-28T10:40:59.208Z"
             }
           ]
         }

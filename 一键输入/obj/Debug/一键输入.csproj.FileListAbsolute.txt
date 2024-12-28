@@ -1,4 +1,3 @@
-C:\Users\Administrator\Documents\Winform\一键输入\一键输入\bin\Debug\一键输入.exe.config
 C:\Users\Administrator\Documents\Winform\一键输入\一键输入\bin\Debug\一键输入.exe
 C:\Users\Administrator\Documents\Winform\一键输入\一键输入\bin\Debug\一键输入.pdb
 C:\Users\Administrator\Documents\Winform\一键输入\一键输入\obj\Debug\一键输入.csproj.AssemblyReference.cache

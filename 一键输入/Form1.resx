@@ -189,7 +189,7 @@ Ouse &amp; Touken
   <data name="richTextBox2.Text" xml:space="preserve">
     <value>1.启动软件。
 2.复制需要输入的文本。
-3.按下快捷键（如 Ctrl + F1），软件将自动模拟输入到目标程序。
+3.按下快捷键（Ctrl + V），软件将自动模拟输入到目标程序。
 </value>
   </data>
   <data name="&gt;&gt;richTextBox2.Name" xml:space="preserve">
