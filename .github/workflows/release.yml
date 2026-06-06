@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore NuGet packages
+        run: nuget restore 一键输入.sln
+
+      - name: Build Release
+        run: msbuild 一键输入.sln /p:Configuration=Release /v:minimal
+
+      - name: Prepare portable exe
+        run: |
+          New-Item -ItemType Directory -Force -Path publish | Out-Null
+          Copy-Item "一键输入\bin\Release\一键输入.exe" "publish\OpenCopy.exe"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: publish/OpenCopy.exe
+          generate_release_notes: true
