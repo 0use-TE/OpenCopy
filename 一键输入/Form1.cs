@@ -1,144 +1,237 @@
 ﻿using System;
 using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Threading;
 using System.Windows.Forms;
-using WindowsInput;
-using WindowsInput.Native;
-
+using 一键输入.Models;
+using 一键输入.Services;
+using 一键输入.UI;
 
 namespace 一键输入
 {
 	public partial class Form1 : Form
 	{
+		private const string DefaultHint = "点击上方录制快捷键";
 
-		// 引入 Windows API
-		[DllImport("user32.dll", CharSet = CharSet.Auto)]
-		public static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
+		private readonly HotKeyService _hotKeyService;
+		private readonly TextInputSimulator _textInputSimulator = new TextInputSimulator();
+		private readonly Timer _feedbackTimer = new Timer();
+		private HotKeyBinding _pendingBinding;
+		private HotKeyBinding _activeBinding;
+		private bool _isRecording;
 
-		[DllImport("user32.dll")]
-		public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
-
-		// 定义快捷键
-		private const int HOTKEY_ID = 1;
-		private const uint MOD_CONTROL = 0x0002; // Ctrl 键
-		private const uint VK_V = 0x56; // V 键（Ctrl+V）
 		public Form1()
 		{
 			InitializeComponent();
-			var stateLable = State;
-			// 注册 Ctrl+V 快捷键
-			if (RegisterHotKey(this.Handle, HOTKEY_ID, MOD_CONTROL, VK_V))
+			_hotKeyService = new HotKeyService(this);
+			_hotKeyService.HotKeyPressed += OnHotKeyPressed;
+
+			_feedbackTimer.Interval = 3000;
+			_feedbackTimer.Tick += FeedbackTimer_Tick;
+
+			applyHotKeyButton.Click += ApplyHotKeyButton_Click;
+			resetHotKeyButton.Click += ResetHotKeyButton_Click;
+			hotKeyTextBox.Click += HotKeyTextBox_Click;
+			hotKeyTextBox.KeyDown += HotKeyTextBox_KeyDown;
+			hotKeyTextBox.Leave += HotKeyTextBox_Leave;
+
+			Shown += Form1_Shown;
+
+			LoadSavedHotKey();
+		}
+
+		private void Form1_Shown(object sender, EventArgs e)
+		{
+			UpdateHotKeyDisplay();
+			applyHotKeyButton.Focus();
+		}
+
+		private void LoadSavedHotKey()
+		{
+			_activeBinding = HotKeyBinding.LoadSaved();
+			_pendingBinding = _activeBinding;
+			UpdateHotKeyDisplay();
+
+			if (!TryApplyBinding(_activeBinding, saveSettings: false))
+				ShowFeedback("启动失败，快捷键可能被占用", FeedbackType.Error);
+		}
+
+		private void OnHotKeyPressed(object sender, EventArgs e)
+		{
+			try
 			{
-				stateLable.Text = "运行";
-				stateLable.BackColor = Color.Green;
+				if (!Clipboard.ContainsText())
+					return;
+
+				var clipboardText = Clipboard.GetText();
+				if (string.IsNullOrEmpty(clipboardText))
+					return;
+
+				_textInputSimulator.Simulate(clipboardText);
 			}
-			else
+			catch (Exception ex)
 			{
-				MessageBox.Show("快捷键注册失败！");
-				stateLable.BackColor = Color.Red;
-				stateLable.Text = "失败";
+				ShowFeedback("输入失败 · " + ex.Message, FeedbackType.Error);
 			}
 		}
+
+		private void HotKeyTextBox_Click(object sender, EventArgs e)
+		{
+			_isRecording = true;
+			hotKeyTextBox.BackColor = AppTheme.SurfaceHover;
+			hotKeyTextBox.ForeColor = AppTheme.SecondaryText;
+			hotKeyTextBox.Text = "···";
+		}
+
+		private void HotKeyTextBox_Leave(object sender, EventArgs e)
+		{
+			AppTheme.StyleHotKeyBox(hotKeyTextBox);
+			if (_isRecording)
+			{
+				_isRecording = false;
+				UpdateHotKeyDisplay();
+			}
+		}
+
+		private void HotKeyTextBox_KeyDown(object sender, KeyEventArgs e)
+		{
+			e.SuppressKeyPress = true;
+
+			if (HotKeyBinding.IsModifierKey(e.KeyCode))
+				return;
+
+			var binding = HotKeyBinding.FromKeyEvent(e);
+			if (binding == null)
+			{
+				_isRecording = false;
+				hotKeyTextBox.ForeColor = AppTheme.Error;
+				hotKeyTextBox.Text = "需组合键";
+				ShowFeedback("请使用 Ctrl / Alt / Shift 组合键", FeedbackType.Error);
+				return;
+			}
+
+			_isRecording = false;
+			_pendingBinding = binding;
+			hotKeyTextBox.ForeColor = AppTheme.Accent;
+			hotKeyTextBox.Text = binding.ToDisplayString();
+			ShowFeedback("已录制 · 点击应用保存", FeedbackType.Info);
+		}
+
+		private void ApplyHotKeyButton_Click(object sender, EventArgs e)
+		{
+			if (_pendingBinding == null)
+			{
+				ShowFeedback("请先录制快捷键", FeedbackType.Error);
+				return;
+			}
+
+			if (_pendingBinding.Equals(_activeBinding))
+			{
+				ShowFeedback("快捷键未变更", FeedbackType.Info);
+				UpdateHotKeyDisplay();
+				return;
+			}
+
+			var previous = _activeBinding;
+			if (TryApplyBinding(_pendingBinding, saveSettings: true))
+			{
+				ShowFeedback("应用成功 · " + _activeBinding.ToDisplayString(), FeedbackType.Success);
+				return;
+			}
+
+			TryApplyBinding(previous, saveSettings: false);
+			ShowFeedback("应用失败，快捷键可能被占用", FeedbackType.Error);
+		}
+
+		private void ResetHotKeyButton_Click(object sender, EventArgs e)
+		{
+			_pendingBinding = HotKeyBinding.Default;
+			UpdateHotKeyDisplay();
+
+			if (_pendingBinding.Equals(_activeBinding))
+			{
+				ShowFeedback("已是默认快捷键", FeedbackType.Info);
+				return;
+			}
+
+			var previous = _activeBinding;
+			if (TryApplyBinding(_pendingBinding, saveSettings: true))
+			{
+				ShowFeedback("已恢复默认 · Ctrl + V", FeedbackType.Success);
+				return;
+			}
+
+			TryApplyBinding(previous, saveSettings: false);
+			ShowFeedback("重置失败，快捷键可能被占用", FeedbackType.Error);
+		}
+
+		private bool TryApplyBinding(HotKeyBinding binding, bool saveSettings)
+		{
+			if (!_hotKeyService.TryRegister(binding))
+			{
+				SetStatus(false);
+				return false;
+			}
+
+			_activeBinding = binding;
+			_pendingBinding = binding;
+
+			if (saveSettings)
+				_activeBinding.SaveToSettings();
+
+			UpdateHotKeyDisplay();
+			SetStatus(true);
+			return true;
+		}
+
+		private void UpdateHotKeyDisplay()
+		{
+			hotKeyTextBox.ForeColor = AppTheme.PrimaryText;
+			hotKeyTextBox.Text = (_pendingBinding ?? _activeBinding).ToDisplayString();
+		}
+
+		private void SetStatus(bool isRunning)
+		{
+			statusDot.BackColor = isRunning ? AppTheme.Success : AppTheme.Error;
+			statusLabel.Text = isRunning ? "就绪" : "异常";
+			statusLabel.ForeColor = isRunning ? AppTheme.SecondaryText : AppTheme.Error;
+		}
+
+		private enum FeedbackType
+		{
+			Success,
+			Error,
+			Info
+		}
+
+		private void ShowFeedback(string message, FeedbackType type)
+		{
+			_feedbackTimer.Stop();
+			hintLabel.Text = message;
+			hintLabel.ForeColor = type == FeedbackType.Success
+				? AppTheme.Success
+				: type == FeedbackType.Error
+					? AppTheme.Error
+					: AppTheme.SecondaryText;
+			_feedbackTimer.Start();
+		}
+
+		private void FeedbackTimer_Tick(object sender, EventArgs e)
+		{
+			_feedbackTimer.Stop();
+			hintLabel.ForeColor = AppTheme.SecondaryText;
+			hintLabel.Text = DefaultHint;
+		}
+
 		protected override void WndProc(ref Message m)
 		{
-			// 检查是否为我们注册的快捷键
-			if (m.Msg == 0x0312) // WM_HOTKEY
-			{
-				// 快捷键被按下时调用模拟输入的方法
-				string clipboardText = Clipboard.GetText(); // 获取剪切板的内容
-				if (!string.IsNullOrEmpty(clipboardText))
-				{
-					SimulateTextInput(clipboardText); // 模拟输入剪切板的文本
-				}
-			}
-
+			_hotKeyService.ProcessWindowMessage(ref m);
 			base.WndProc(ref m);
 		}
-		public void SimulateTextInput(string text)
-		{
-			InputSimulator simulator = new InputSimulator();
-			Thread.Sleep(500);
-			// 遍历文本中的每个字符
-			foreach (var c in text)
-			{
-				if (c == '\n' || c == '\r')
-				{
-					// 如果是换行符，模拟回车
-					simulator.Keyboard.KeyPress(VirtualKeyCode.RETURN);
-				}
-				else
-				{
-					// 输入文本中的每个字符
-					simulator.Keyboard.TextEntry(c);
-				}
 
-			}
-		}
 		protected override void OnFormClosed(FormClosedEventArgs e)
 		{
-			UnregisterHotKey(this.Handle, HOTKEY_ID); // 注销快捷键
+			_feedbackTimer.Dispose();
+			_hotKeyService.Dispose();
 			base.OnFormClosed(e);
-		}
-
-		private void label1_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void textBox1_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void button1_Click(object sender, EventArgs e)
-		{
-			
-		}
-
-		private void tabPage1_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void Form1_Load(object sender, EventArgs e)
-		{
-
-		}
-
-		private void textBox1_TextChanged_1(object sender, EventArgs e)
-		{
-
-		}
-
-		private void richTextBox1_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void richTextBox2_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void label2_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void label3_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void label4_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void label6_Click(object sender, EventArgs e)
-		{
-
 		}
 	}
 }

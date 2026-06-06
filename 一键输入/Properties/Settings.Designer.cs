@@ -10,13 +10,10 @@
 
 namespace 一键输入.Properties
 {
-
-
 	[global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
 	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
 	internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
 	{
-
 		private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
 
 		public static Settings Default
@@ -24,6 +21,36 @@ namespace 一键输入.Properties
 			get
 			{
 				return defaultInstance;
+			}
+		}
+
+		[global::System.Configuration.UserScopedSettingAttribute()]
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.Configuration.DefaultSettingValueAttribute("2")]
+		public int HotKeyModifiers
+		{
+			get
+			{
+				return ((int)(this["HotKeyModifiers"]));
+			}
+			set
+			{
+				this["HotKeyModifiers"] = value;
+			}
+		}
+
+		[global::System.Configuration.UserScopedSettingAttribute()]
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.Configuration.DefaultSettingValueAttribute("86")]
+		public int HotKeyVirtualKey
+		{
+			get
+			{
+				return ((int)(this["HotKeyVirtualKey"]));
+			}
+			set
+			{
+				this["HotKeyVirtualKey"] = value;
 			}
 		}
 	}

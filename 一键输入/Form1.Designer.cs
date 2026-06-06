@@ -1,16 +1,13 @@
-﻿namespace 一键输入
+﻿using System.Drawing;
+using System.Windows.Forms;
+using 一键输入.UI;
+
+namespace 一键输入
 {
 	partial class Form1
 	{
-		/// <summary>
-		/// 必需的设计器变量。
-		/// </summary>
 		private System.ComponentModel.IContainer components = null;
 
-		/// <summary>
-		/// 清理所有正在使用的资源。
-		/// </summary>
-		/// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
 		protected override void Dispose(bool disposing)
 		{
 			if (disposing && (components != null))
@@ -20,112 +17,134 @@
 			base.Dispose(disposing);
 		}
 
-		#region Windows 窗体设计器生成的代码
-
-		/// <summary>
-		/// 设计器支持所需的方法 - 不要修改
-		/// 使用代码编辑器修改此方法的内容。
-		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-			this.label1 = new System.Windows.Forms.Label();
-			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-			this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.State = new System.Windows.Forms.Label();
+			this.titleLabel = new System.Windows.Forms.Label();
+			this.statusDot = new System.Windows.Forms.Panel();
+			this.statusLabel = new System.Windows.Forms.Label();
+			this.hotKeyTextBox = new System.Windows.Forms.TextBox();
+			this.hintLabel = new System.Windows.Forms.Label();
+			this.applyHotKeyButton = new System.Windows.Forms.Button();
+			this.resetHotKeyButton = new System.Windows.Forms.Button();
+			this.footerLabel = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
-			// label1
+			// titleLabel
 			// 
-			resources.ApplyResources(this.label1, "label1");
-			this.label1.BackColor = System.Drawing.Color.MediumSpringGreen;
-			this.label1.Name = "label1";
-			this.label1.Click += new System.EventHandler(this.label1_Click);
+			this.titleLabel.AutoSize = true;
+			this.titleLabel.Font = AppTheme.TitleFont;
+			this.titleLabel.ForeColor = AppTheme.PrimaryText;
+			this.titleLabel.Location = new System.Drawing.Point(36, 32);
+			this.titleLabel.Name = "titleLabel";
+			this.titleLabel.Size = new System.Drawing.Size(133, 37);
+			this.titleLabel.TabIndex = 0;
+			this.titleLabel.Text = "OpenCopy";
 			// 
-			// richTextBox1
+			// statusDot
 			// 
-			resources.ApplyResources(this.richTextBox1, "richTextBox1");
-			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+			this.statusDot.BackColor = AppTheme.Success;
+			this.statusDot.Location = new System.Drawing.Point(318, 48);
+			this.statusDot.Name = "statusDot";
+			this.statusDot.Size = new System.Drawing.Size(8, 8);
+			this.statusDot.TabIndex = 1;
 			// 
-			// richTextBox2
+			// statusLabel
 			// 
-			resources.ApplyResources(this.richTextBox2, "richTextBox2");
-			this.richTextBox2.Name = "richTextBox2";
-			this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
+			this.statusLabel.AutoSize = true;
+			this.statusLabel.Font = AppTheme.SmallFont;
+			this.statusLabel.ForeColor = AppTheme.SecondaryText;
+			this.statusLabel.Location = new System.Drawing.Point(332, 44);
+			this.statusLabel.Name = "statusLabel";
+			this.statusLabel.Size = new System.Drawing.Size(32, 15);
+			this.statusLabel.TabIndex = 2;
+			this.statusLabel.Text = "就绪";
 			// 
-			// label2
+			// hotKeyTextBox
 			// 
-			resources.ApplyResources(this.label2, "label2");
-			this.label2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-			this.label2.Name = "label2";
-			this.label2.Click += new System.EventHandler(this.label2_Click);
+			this.hotKeyTextBox.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.hotKeyTextBox.Location = new System.Drawing.Point(36, 96);
+			this.hotKeyTextBox.Name = "hotKeyTextBox";
+			this.hotKeyTextBox.ReadOnly = true;
+			this.hotKeyTextBox.Size = new System.Drawing.Size(328, 36);
+			this.hotKeyTextBox.TabIndex = 3;
+			this.hotKeyTextBox.TabStop = false;
+			this.hotKeyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			AppTheme.StyleHotKeyBox(this.hotKeyTextBox);
 			// 
-			// label3
+			// hintLabel
 			// 
-			resources.ApplyResources(this.label3, "label3");
-			this.label3.ForeColor = System.Drawing.Color.IndianRed;
-			this.label3.Name = "label3";
+			this.hintLabel.AutoSize = true;
+			this.hintLabel.Font = AppTheme.SmallFont;
+			this.hintLabel.ForeColor = AppTheme.SecondaryText;
+			this.hintLabel.Location = new System.Drawing.Point(36, 142);
+			this.hintLabel.Name = "hintLabel";
+			this.hintLabel.Size = new System.Drawing.Size(92, 15);
+			this.hintLabel.TabIndex = 4;
+			this.hintLabel.Text = "点击上方录制快捷键";
 			// 
-			// label5
+			// applyHotKeyButton
 			// 
-			resources.ApplyResources(this.label5, "label5");
-			this.label5.Name = "label5";
+			this.applyHotKeyButton.Location = new System.Drawing.Point(36, 176);
+			this.applyHotKeyButton.Name = "applyHotKeyButton";
+			this.applyHotKeyButton.Size = new System.Drawing.Size(156, 34);
+			this.applyHotKeyButton.TabIndex = 5;
+			this.applyHotKeyButton.Text = "应用";
+			this.applyHotKeyButton.UseVisualStyleBackColor = false;
+			AppTheme.StylePrimaryButton(this.applyHotKeyButton);
 			// 
-			// label4
+			// resetHotKeyButton
 			// 
-			resources.ApplyResources(this.label4, "label4");
-			this.label4.Name = "label4";
-			this.label4.Click += new System.EventHandler(this.label4_Click);
+			this.resetHotKeyButton.Location = new System.Drawing.Point(208, 176);
+			this.resetHotKeyButton.Name = "resetHotKeyButton";
+			this.resetHotKeyButton.Size = new System.Drawing.Size(156, 34);
+			this.resetHotKeyButton.TabIndex = 6;
+			this.resetHotKeyButton.Text = "重置";
+			this.resetHotKeyButton.UseVisualStyleBackColor = false;
+			AppTheme.StyleGhostButton(this.resetHotKeyButton);
 			// 
-			// label6
+			// footerLabel
 			// 
-			resources.ApplyResources(this.label6, "label6");
-			this.label6.Name = "label6";
-			this.label6.Click += new System.EventHandler(this.label6_Click);
-			// 
-			// State
-			// 
-			resources.ApplyResources(this.State, "State");
-			this.State.Name = "State";
+			this.footerLabel.AutoSize = true;
+			this.footerLabel.Font = AppTheme.SmallFont;
+			this.footerLabel.ForeColor = AppTheme.SecondaryText;
+			this.footerLabel.Location = new System.Drawing.Point(36, 232);
+			this.footerLabel.Name = "footerLabel";
+			this.footerLabel.Size = new System.Drawing.Size(187, 15);
+			this.footerLabel.TabIndex = 7;
+			this.footerLabel.Text = "Ouse & Touken · github.com/0use-TE/OpenCopy";
 			// 
 			// Form1
 			// 
-			resources.ApplyResources(this, "$this");
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.SystemColors.Control;
-			this.Controls.Add(this.State);
-			this.Controls.Add(this.label6);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.richTextBox2);
-			this.Controls.Add(this.richTextBox1);
-			this.Controls.Add(this.label1);
+			this.BackColor = AppTheme.Background;
+			this.ClientSize = new System.Drawing.Size(400, 268);
+			this.Controls.Add(this.footerLabel);
+			this.Controls.Add(this.resetHotKeyButton);
+			this.Controls.Add(this.applyHotKeyButton);
+			this.Controls.Add(this.hintLabel);
+			this.Controls.Add(this.hotKeyTextBox);
+			this.Controls.Add(this.statusLabel);
+			this.Controls.Add(this.statusDot);
+			this.Controls.Add(this.titleLabel);
+			this.Font = AppTheme.BodyFont;
+			this.ForeColor = AppTheme.PrimaryText;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
 			this.Name = "Form1";
-			this.Load += new System.EventHandler(this.Form1_Load);
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.Text = "OpenCopy";
 			this.ResumeLayout(false);
 			this.PerformLayout();
-
 		}
 
-		#endregion
-
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.RichTextBox richTextBox1;
-		private System.Windows.Forms.RichTextBox richTextBox2;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label State;
+		private Label titleLabel;
+		private Panel statusDot;
+		private Label statusLabel;
+		private TextBox hotKeyTextBox;
+		private Label hintLabel;
+		private Button applyHotKeyButton;
+		private Button resetHotKeyButton;
+		private Label footerLabel;
 	}
 }
-
